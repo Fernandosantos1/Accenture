@@ -32,7 +32,7 @@
  const App = () => {
   return(
     <SafeAreaView>
-      <Inicio/>
+      <Cadastro/>
     </SafeAreaView>
   )
 }

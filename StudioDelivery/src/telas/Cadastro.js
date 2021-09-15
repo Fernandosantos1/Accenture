@@ -13,8 +13,14 @@ import {
 } from 'react-native';
 
 const Cadastro = () => {
-  const [text, onChangeText] = React.useState(null);
-  const [number, onChangeNumber] = React.useState(null);
+  const [nome, onChangeNome] = React.useState(null);
+  const [email, onChangeEmail] = React.useState(null);
+  const [senha, onChangeSenha] = React.useState(null);
+  const [senha_confirma, onChangeSenhaC] = React.useState(null);
+
+  const [cpf, onChangeCpf] = React.useState(null);
+  const [data, onChangeData] = React.useState(null);
+  const [cell, onChangeCell] = React.useState(null);
 
   return (
     <View style={styles.bg_cadastro}>
@@ -27,48 +33,48 @@ const Cadastro = () => {
       <View style={styles.inner_cadastro}>
         <TextInput
           style={styles.in_field}
-          onChangeText={onChangeText}
-          value={text}
+          onChangeText={onChangeNome}
+          value={nome}
           placeholder={'Nome Completo'}
           keyboardType="text"></TextInput>
         <View style={styles.alinhador}>
           <TextInput
             
             style={styles.in_field1}
-            onChangeText={onChangeNumber}
-            value={number}
+            onChangeText={onChangeData}
+            value={data}
             placeholder={'Data de Nascimento'}
             keyboardType="numeric"></TextInput>
           <TextInput
             style={styles.in_field2}
-            onChangeText={onChangeNumber}
-            value={number}
+            onChangeText={onChangeCpf}
+            value={cpf}
             placeholder={'CPF'}
             keyboardType="numeric"></TextInput>
         </View>
         <TextInput
           style={styles.in_field}
-          onChangeText={onChangeNumber}
-          value={number}
+          onChangeText={onChangeCell}
+          value={cell}
           placeholder={'Celular'}
           keyboardType="numeric"></TextInput>
         <TextInput
           style={styles.in_field}
-          onChangeText={onChangeText}
-          value={text}
+          onChangeText={onChangeEmail}
+          value={email}
           placeholder={'E-mail'}
           keyboardType="text"></TextInput>
         <TextInput
           style={styles.in_field}
-          onChangeText={onChangeText}
-          value={text}
+          onChangeText={onChangeSenha}
+          value={senha}
           placeholder={'Senha'}
           keyboardType="text"
           secureTextEntry={true}></TextInput>
         <TextInput
           style={styles.in_field}
-          onChangeText={onChangeText}
-          value={text}
+          onChangeText={onChangeSenhaC}
+          value={senha_confirma}
           placeholder={'Repetir a senha'}
           keyboardType="text"
           secureTextEntry={true}></TextInput>
