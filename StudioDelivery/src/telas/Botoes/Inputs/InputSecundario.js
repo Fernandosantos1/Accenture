@@ -24,7 +24,7 @@ export default props => {
     Animated.parallel([
       Animated.timing(translationTop, {
         toValue: 20,
-        duration: 300,
+        duration: 200,
         useNativeDriver: true,
       }),
     ]).start();
@@ -33,7 +33,7 @@ export default props => {
     Animated.parallel([
       Animated.timing(translationTop, {
         toValue: 30,
-        duration: 300,
+        duration: 200,
         useNativeDriver: true,
       }),
     ]).start();

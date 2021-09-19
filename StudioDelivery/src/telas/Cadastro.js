@@ -17,12 +17,18 @@ import {
   _View,
   Button,
   Animated,
+  KeyboardAvoidingView,
 } from 'react-native';
 import InputTerciario from './Botoes/Inputs/InputTerciario';
 
 const Cadastro = () => {
   
   return (
+    
+    <KeyboardAvoidingView
+    behavior={Platform.OS === "ios" ? "padding" : null}
+    keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}>
+       <ScrollView>
     <View style={styles.bg_cadastro}>
       <View style={styles.container}>
         <Text style={styles.titulo}>Criar uma conta</Text>
@@ -46,6 +52,8 @@ const Cadastro = () => {
         </View>
       </View>
     </View>
+   </ScrollView> 
+    </KeyboardAvoidingView>
   );
 };
 const styles = StyleSheet.create({
@@ -64,39 +72,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
   },
-  in_field: {
-    backgroundColor: '#fff',
-    marginHorizontal:30,
-    marginVertical: 10,
-    borderRadius: 12,
-    width: '85%',
-    paddingHorizontal: 20,
-    paddingTop:18,
-    paddingBottom:2,
-    height: 60,
-  },
-  in_field1: {
-    backgroundColor: '#fff',
-    //marginHorizontal:30,
-    marginVertical: 10,
-    borderRadius: 12,
-    width: '55%',
-    paddingHorizontal: 20,
-    paddingTop:18,
-    paddingBottom:2,
-    height: 60,
-  },
-  in_field2: {
-    backgroundColor: '#fff',
-    //marginHorizontal:30,
-    marginVertical: 10,
-    borderRadius: 12,
-    width: '40%',
-    paddingHorizontal: 20,
-    paddingTop:18,
-    paddingBottom:2,
-    height: 60,
-  },
+  
   alinhador: {
     display: 'flex',
     flexDirection: 'row',
@@ -127,6 +103,7 @@ const styles = StyleSheet.create({
     top:20,
     left:50,
     fontSize:12,
+    
   },
 });
 
