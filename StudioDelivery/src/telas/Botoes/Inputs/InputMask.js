@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
     paddingTop: 18,
     paddingBottom: 2,
     height: 60,
+    color: '#000',
   },
   in_box: {
     width: '100%',
