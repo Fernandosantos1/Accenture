@@ -77,13 +77,14 @@ const styles = StyleSheet.create({
   in_field: {
     backgroundColor: '#fff',
     marginHorizontal: 30,
-    marginVertical: 12,
+    marginVertical: 15,
     borderRadius: 12,
     width: '85%',
     paddingHorizontal: 20,
     paddingTop: 18,
     paddingBottom: 2,
     height: 60,
+    color: '#000',
   },
   in_box: {
     width: '100%',

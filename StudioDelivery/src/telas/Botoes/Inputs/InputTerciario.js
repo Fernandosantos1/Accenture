@@ -82,18 +82,20 @@ const styles = StyleSheet.create({
   in_field: {
     backgroundColor: '#fff',
     //marginHorizontal:30,
-    marginVertical: 10,
+    marginVertical: 15,
     borderRadius: 12,
     width: '100%',
     paddingHorizontal: 20,
     paddingTop:18,
     paddingBottom:2,
     height: 60,
+    color: '#000',
   },
   in_box: {
-    width: '40%',
+    width: '43%',
     display: 'flex',
-    alignItems: 'flex-end',
+    alignItems: 'center',
+    //justifyContent:'center',
     position: 'relative',
   },
   //   blank: {

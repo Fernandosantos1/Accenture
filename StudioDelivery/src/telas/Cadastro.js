@@ -21,15 +21,27 @@ import {
   Animated,
   KeyboardAvoidingView,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 
 const Cadastro = () => {
+  const [senha, setSenha] = React.useState(true);
+  const [confirmarSenha, setConfirmarSenha] = React.useState(true);
+
+  const iconSenha = senha
+    ? require('./Imagens/esconder.png')
+    : require('./Imagens/mostrar.png');
+
+    const iconConfirmarSenha = confirmarSenha
+    ? require('./Imagens/esconder.png')
+    : require('./Imagens/mostrar.png');
+  //<Image source={iconSenha} />
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}style={styles.bg_cadastro}>
       <ScrollView>
-        <View style={styles.bg_cadastro}>
+        <View >
           <View style={styles.container}>
             <Text style={styles.titulo}>Criar uma conta</Text>
             <Text style={styles.sub_titulo}>
@@ -37,12 +49,12 @@ const Cadastro = () => {
             </Text>
           </View>
           <View style={styles.inner_cadastro}>
-            <InputPrincipal 
-            placeholder="Nome Completo" 
-            type="default"
-            secure={false}
+            <InputPrincipal
+              placeholder="Nome Completo"
+              type="default"
+              secure={false}
             />
-            
+
             <View style={styles.alinhador}>
               <InputSecundario
                 placeholder="Data de Nascimento"
@@ -50,13 +62,12 @@ const Cadastro = () => {
                 secure={false}
                 mascara="datetime"
               />
-              <InputTerciario 
-              placeholder="CPF" 
-              type="numeric" 
-              secure={false}
-              mascara="cpf"
+              <InputTerciario
+                placeholder="CPF"
+                type="numeric"
+                secure={false}
+                mascara="cpf"
               />
-              
             </View>
             <InputMask
               placeholder="Celular"
@@ -68,19 +79,44 @@ const Cadastro = () => {
               placeholder="E-mail"
               type="default"
               secure={false}
-              
             />
-            <InputPrincipal 
-            placeholder="Senha" 
-            type="default" 
-            secure={true}
-            />
-            <InputPrincipal
-              placeholder="Repetir a senha"
-              type="default"
-              secure={true}
-
-            />
+            <View style={styles.mostrar_senha}>
+              <TouchableOpacity 
+              style={styles.btn_senha}
+              onPressIn={() => {
+                setSenha(false)
+                
+              }}
+              onPressOut={() => {
+                setSenha(true)
+              }}
+              >
+                <Image style={styles.imagem_senha} source={iconSenha} />
+              </TouchableOpacity>
+              <InputPrincipal
+                placeholder="Senha"
+                type="default"
+                secure={senha}
+              />
+            </View>
+            <View style={styles.mostrar_senha}>
+              <TouchableOpacity 
+              style={styles.btn_senha}
+              onPressIn={() => {
+                setConfirmarSenha(false)
+              }}
+              onPressOut={() => {
+                setConfirmarSenha(true)
+              }}
+              >
+                <Image style={styles.imagem_senha} source={iconConfirmarSenha} />
+              </TouchableOpacity>
+              <InputPrincipal
+                placeholder="Repetir a senha"
+                type="default"
+                secure={confirmarSenha}
+              />
+            </View>
             <View style={styles.alinhador}>
               <BotaoSecundario conteudo="Voltar" />
 
@@ -124,6 +160,20 @@ const styles = StyleSheet.create({
   },
   login: {
     color: '#4E46B4',
+  },
+  mostrar_senha: {
+    position: 'relative',
+    width: '100%',
+  },
+  imagem_senha: {
+    width: 40,
+    height: 40,
+  },
+  btn_senha: {
+    position: 'absolute',
+    zIndex: 5,
+    top: 22.5,
+    right: 35,
   },
 });
 
