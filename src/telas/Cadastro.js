@@ -1,5 +1,11 @@
-import React from 'react';
-import InputMask from 'react-native-text-input-mask';
+import React, {useEffect, useRef} from 'react';
+import BotaoPrincial from './Botoes/BotaoPrincial';
+import BotaoSecundario from './Botoes/BotaoSecundario';
+import BotaoDesabilitado from './Botoes/BotaoDesabilitado';
+import InputPrincipal from './Botoes/Inputs/InputPrincipal';
+import InputSecundario from './Botoes/Inputs/InputSecundario';
+import InputTerciario from './Botoes/Inputs/InputTerciario';
+
 import {
   SafeAreaView,
   ScrollView,
@@ -11,78 +17,59 @@ import {
   View,
   _View,
   Button,
+  Animated,
+  KeyboardAvoidingView,
+  TouchableOpacity,
 } from 'react-native';
 
 const Cadastro = () => {
-  const [text, onChangeText] = React.useState(null);
-  const [number, onChangeNumber] = React.useState(null);
-
   return (
-    <View style={styles.bg_cadastro}>
-      <View style={styles.container}>
-        <Text style={styles.titulo}>Criar uma conta</Text>
-        <Text style={styles.sub_titulo}>
-          Já tem uma conta? <Text style={styles.login}>Faça login</Text>
-        </Text>
-      </View>
-      <View style={styles.inner_cadastro}>
-        <TextInput
-          style={styles.in_field}
-          onChangeText={onChangeText}
-          value={text}
-          placeholder={'Nome Completo'}
-          keyboardType="text"></TextInput>
-        <View style={styles.alinhador}>
-          <TextInput
-            
-            style={styles.in_field1}
-            onChangeText={onChangeNumber}
-            value={number}
-            placeholder={'Data de Nascimento'}
-            keyboardType="numeric"></TextInput>
-          <TextInput
-            style={styles.in_field2}
-            onChangeText={onChangeNumber}
-            value={number}
-            placeholder={'CPF'}
-            keyboardType="numeric"></TextInput>
-        </View>
-        <TextInput
-          style={styles.in_field}
-          onChangeText={onChangeNumber}
-          value={number}
-          placeholder={'Celular'}
-          keyboardType="numeric"></TextInput>
-        <TextInput
-          style={styles.in_field}
-          onChangeText={onChangeText}
-          value={text}
-          placeholder={'E-mail'}
-          keyboardType="text"></TextInput>
-        <TextInput
-          style={styles.in_field}
-          onChangeText={onChangeText}
-          value={text}
-          placeholder={'Senha'}
-          keyboardType="text"
-          secureTextEntry={true}></TextInput>
-        <TextInput
-          style={styles.in_field}
-          onChangeText={onChangeText}
-          value={text}
-          placeholder={'Repetir a senha'}
-          keyboardType="text"
-          secureTextEntry={true}></TextInput>
-        <View style={styles.alinhador}>
-          <View style={styles.btn_right}>
-            <Text style={styles.btn_txt}>Voltar</Text>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : null}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
+      <ScrollView>
+        <View style={styles.bg_cadastro}>
+          <View style={styles.container}>
+            <Text style={styles.titulo}>Criar uma conta</Text>
+            <Text style={styles.sub_titulo}>
+              Já tem uma conta? <Text style={styles.login}>Faça login</Text>
+            </Text>
           </View>
-          <View style={styles.btn_left}>
-            <Text style={styles.btn_txt}>Continuar</Text>
+          <View style={styles.inner_cadastro}>
+            <InputPrincipal placeholder="Nome Completo" type="default" />
+            <View style={styles.alinhador}>
+              <InputSecundario
+                placeholder="Data de Nascimento"
+                type="numeric"
+                secure={false}
+              />
+              <InputTerciario placeholder="CPF" type="numeric" secure={false} />
+            </View>
+            <InputPrincipal
+              placeholder="Celular"
+              type="numeric"
+              secure={false}
+            />
+            <InputPrincipal
+              placeholder="E-mail"
+              type="default"
+              secure={false}
+            />
+            <InputPrincipal placeholder="Senha" type="default" secure={true} />
+            <InputPrincipal
+              placeholder="Repetir a senha"
+              type="default"
+              secure={true}
+            />
+            <View style={styles.alinhador}>
+              <BotaoSecundario conteudo="Voltar" />
+
+              <BotaoPrincial conteudo="Continuar" />
+            </View>
           </View>
         </View>
-      </View>
-    </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 const styles = StyleSheet.create({
@@ -101,33 +88,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
   },
-  in_field: {
-    backgroundColor: '#fff',
-    // marginHorizontal:30,
-    marginVertical: 10,
-    borderRadius: 12,
-    width: '85%',
-    paddingHorizontal: 20,
-    height: 60,
-  },
-  in_field1: {
-    backgroundColor: '#fff',
-    // marginHorizontal:30,
-    marginVertical: 10,
-    borderRadius: 12,
-    width: '55%',
-    paddingHorizontal: 20,
-    height: 60,
-  },
-  in_field2: {
-    backgroundColor: '#fff',
-    // marginHorizontal:30,
-    marginVertical: 10,
-    borderRadius: 12,
-    width: '40%',
-    paddingHorizontal: 20,
-    height: 65,
-  },
+
   alinhador: {
     display: 'flex',
     flexDirection: 'row',
@@ -143,30 +104,6 @@ const styles = StyleSheet.create({
   },
   login: {
     color: '#4E46B4',
-  },
-  btn_right: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginVertical: 10,
-    width: '47.5%',
-    height: 55,
-    backgroundColor: '#a19dd4',
-    borderRadius: 12,
-    color: '#fff',
-  },
-  btn_txt: {
-    color: '#fff',
-  },
-  btn_left: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginVertical: 10,
-    width: '47.5%',
-    height: 55,
-    backgroundColor: '#d6d6d6',
-    borderRadius: 12,
   },
 });
 
