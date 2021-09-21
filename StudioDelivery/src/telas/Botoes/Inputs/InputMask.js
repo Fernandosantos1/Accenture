@@ -53,9 +53,7 @@ export default props => {
       </Animated.Text>
       <TextInputMask 
       type={props.mascara}
-      options={{
-        format: 'DD/MM/YYYY'
-      }}
+
       secureTextEntry={props.secure}
       keyboardType={props.type}
         onFocus={() => {
@@ -83,17 +81,17 @@ export default props => {
 const styles = StyleSheet.create({
   in_field: {
     backgroundColor: '#fff',
-    //marginHorizontal:30,
+    marginHorizontal: 30,
     marginVertical: 12,
     borderRadius: 12,
-    width: '100%',
+    width: '85%',
     paddingHorizontal: 20,
-    paddingTop:18,
-    paddingBottom:2,
+    paddingTop: 18,
+    paddingBottom: 2,
     height: 60,
   },
   in_box: {
-    width: '55%',
+    width: '100%',
     display: 'flex',
     alignItems: 'center',
     position: 'relative',
@@ -109,7 +107,7 @@ const styles = StyleSheet.create({
     color: '#999',
     position: 'absolute',
     zIndex: 5,
-    left: 20,
+    left: 50,
     fontSize: 12,
   },
   in_placeholder: {
@@ -117,6 +115,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 5,
     //top: 30,
-    left: 20,
+    left: 50,
   },
 });

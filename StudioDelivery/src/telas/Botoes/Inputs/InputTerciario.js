@@ -14,6 +14,9 @@ import {
   Keyboard,
 } from 'react-native';
 
+import { TextInputMask } from 'react-native-masked-text';
+
+
 export default props => {
   const [typing, setTyping] = React.useState(false);
   const [value, setValue] = React.useState('');
@@ -48,7 +51,9 @@ export default props => {
         ]}>
         {props.placeholder}
       </Animated.Text>
-      <TextInput
+      <TextInputMask 
+      type={props.mascara}
+
       secureTextEntry={props.secure}
       keyboardType={props.type}
         onFocus={() => {
@@ -62,13 +67,14 @@ export default props => {
             userNotTyping();
           }
         }}
+        
         onChangeText={text => {
           setTyping(true);
           userTyping();
           setValue(text);
         }}
         value={value}
-        style={styles.in_field}></TextInput>
+        style={styles.in_field}></TextInputMask >
     </View>
   );
 };

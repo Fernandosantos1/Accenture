@@ -5,6 +5,7 @@ import BotaoDesabilitado from './Botoes/BotaoDesabilitado';
 import InputPrincipal from './Botoes/Inputs/InputPrincipal';
 import InputSecundario from './Botoes/Inputs/InputSecundario';
 import InputTerciario from './Botoes/Inputs/InputTerciario';
+import InputMask from './Botoes/Inputs/InputMask';
 
 import {
   SafeAreaView,
@@ -36,30 +37,49 @@ const Cadastro = () => {
             </Text>
           </View>
           <View style={styles.inner_cadastro}>
-            <InputPrincipal placeholder="Nome Completo" type="default" />
+            <InputPrincipal 
+            placeholder="Nome Completo" 
+            type="default"
+            secure={false}
+            />
+            
             <View style={styles.alinhador}>
               <InputSecundario
                 placeholder="Data de Nascimento"
                 type="numeric"
                 secure={false}
+                mascara="datetime"
               />
-              <InputTerciario placeholder="CPF" type="numeric" secure={false} />
+              <InputTerciario 
+              placeholder="CPF" 
+              type="numeric" 
+              secure={false}
+              mascara="cpf"
+              />
+              
             </View>
-            <InputPrincipal
+            <InputMask
               placeholder="Celular"
               type="numeric"
               secure={false}
+              mascara="cel-phone"
             />
             <InputPrincipal
               placeholder="E-mail"
               type="default"
               secure={false}
+              
             />
-            <InputPrincipal placeholder="Senha" type="default" secure={true} />
+            <InputPrincipal 
+            placeholder="Senha" 
+            type="default" 
+            secure={true}
+            />
             <InputPrincipal
               placeholder="Repetir a senha"
               type="default"
               secure={true}
+
             />
             <View style={styles.alinhador}>
               <BotaoSecundario conteudo="Voltar" />
