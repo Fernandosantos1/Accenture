@@ -11,6 +11,7 @@
  import React from 'react';
  import Inicio from './telas/Inicio';
  import Cadastro from './telas/Cadastro'; 
+ import Login from './telas/Login'
  import {
    SafeAreaView,
    ScrollView,
@@ -32,7 +33,7 @@
  const App = () => {
   return(
     <SafeAreaView>
-      <Cadastro/>
+      <Login/>
     </SafeAreaView>
   )
 }
