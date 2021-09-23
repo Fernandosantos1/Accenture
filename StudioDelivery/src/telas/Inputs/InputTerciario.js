@@ -14,6 +14,9 @@ import {
   Keyboard,
 } from 'react-native';
 
+import { TextInputMask } from 'react-native-masked-text';
+
+
 export default props => {
   const [typing, setTyping] = React.useState(false);
   const [value, setValue] = React.useState('');
@@ -48,7 +51,9 @@ export default props => {
         ]}>
         {props.placeholder}
       </Animated.Text>
-      <TextInput
+      <TextInputMask 
+      type={props.mascara}
+
       secureTextEntry={props.secure}
       keyboardType={props.type}
         onFocus={() => {
@@ -69,27 +74,29 @@ export default props => {
           setValue(text);
         }}
         value={value}
-        style={styles.in_field}></TextInput>
+        style={styles.in_field}></TextInputMask >
     </View>
   );
 };
 const styles = StyleSheet.create({
   in_field: {
     backgroundColor: '#fff',
-    marginHorizontal: 30,
+    //marginHorizontal:30,
     marginVertical: 15,
     borderRadius: 12,
-    width: '85%',
+    width: '100%',
     paddingHorizontal: 20,
-    paddingTop: 18,
-    paddingBottom: 2,
+    paddingTop:18,
+    paddingBottom:2,
     height: 60,
     color: '#000',
+    fontFamily: 'Poppins-Light',
   },
   in_box: {
-    width: '100%',
+    width: '43%',
     display: 'flex',
     alignItems: 'center',
+    //justifyContent:'center',
     position: 'relative',
   },
   //   blank: {
@@ -103,14 +110,16 @@ const styles = StyleSheet.create({
     color: '#999',
     position: 'absolute',
     zIndex: 5,
-    left: 50,
+    left: 20,
     fontSize: 12,
+    fontFamily: 'Poppins-Light',
   },
   in_placeholder: {
     color: '#000',
     position: 'absolute',
     zIndex: 5,
     //top: 30,
-    left: 50,
+    left: 20,
+    fontFamily: 'Poppins-Light',
   },
 });

@@ -2,10 +2,10 @@ import React, {useEffect, useRef} from 'react';
 import BotaoPrincial from './Botoes/BotaoPrincial';
 import BotaoSecundario from './Botoes/BotaoSecundario';
 import BotaoDesabilitado from './Botoes/BotaoDesabilitado';
-import InputPrincipal from './Botoes/Inputs/InputPrincipal';
-import InputSecundario from './Botoes/Inputs/InputSecundario';
-import InputTerciario from './Botoes/Inputs/InputTerciario';
-import InputMask from './Botoes/Inputs/InputMask';
+import InputPrincipal from './Inputs/InputPrincipal';
+import InputSecundario from './Inputs/InputSecundario';
+import InputTerciario from './Inputs/InputTerciario';
+import InputMask from './Inputs/InputMask';
 
 import {
   SafeAreaView,
@@ -32,21 +32,24 @@ const Cadastro = () => {
     ? require('./Imagens/esconder.png')
     : require('./Imagens/mostrar.png');
 
-    const iconConfirmarSenha = confirmarSenha
+  const iconConfirmarSenha = confirmarSenha
     ? require('./Imagens/esconder.png')
     : require('./Imagens/mostrar.png');
-  //<Image source={iconSenha} />
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}style={styles.bg_cadastro}>
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
+      style={styles.bg_cadastro}>
       <ScrollView>
-        <View >
+        <View>
           <View style={styles.container}>
             <Text style={styles.titulo}>Criar uma conta</Text>
-            <Text style={styles.sub_titulo}>
-              Já tem uma conta? <Text style={styles.login}>Faça login</Text>
-            </Text>
+            <TouchableOpacity>
+              <Text style={styles.sub_titulo}>
+                Já tem uma conta? <Text style={styles.login}>Faça login</Text>
+              </Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.inner_cadastro}>
             <InputPrincipal
@@ -81,16 +84,14 @@ const Cadastro = () => {
               secure={false}
             />
             <View style={styles.mostrar_senha}>
-              <TouchableOpacity 
-              style={styles.btn_senha}
-              onPressIn={() => {
-                setSenha(false)
-                
-              }}
-              onPressOut={() => {
-                setSenha(true)
-              }}
-              >
+              <TouchableOpacity
+                style={styles.btn_senha}
+                onPressIn={() => {
+                  setSenha(false);
+                }}
+                onPressOut={() => {
+                  setSenha(true);
+                }}>
                 <Image style={styles.imagem_senha} source={iconSenha} />
               </TouchableOpacity>
               <InputPrincipal
@@ -100,16 +101,18 @@ const Cadastro = () => {
               />
             </View>
             <View style={styles.mostrar_senha}>
-              <TouchableOpacity 
-              style={styles.btn_senha}
-              onPressIn={() => {
-                setConfirmarSenha(false)
-              }}
-              onPressOut={() => {
-                setConfirmarSenha(true)
-              }}
-              >
-                <Image style={styles.imagem_senha} source={iconConfirmarSenha} />
+              <TouchableOpacity
+                style={styles.btn_senha}
+                onPressIn={() => {
+                  setConfirmarSenha(false);
+                }}
+                onPressOut={() => {
+                  setConfirmarSenha(true);
+                }}>
+                <Image
+                  style={styles.imagem_senha}
+                  source={iconConfirmarSenha}
+                />
               </TouchableOpacity>
               <InputPrincipal
                 placeholder="Repetir a senha"
