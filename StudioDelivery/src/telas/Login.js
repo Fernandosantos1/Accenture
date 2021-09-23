@@ -27,7 +27,6 @@ import {
 const Cadastro = () => {
   const [senha, setSenha] = React.useState(true);
 
-
   const iconSenha = senha
     ? require('./Imagens/esconder.png')
     : require('./Imagens/mostrar.png');
@@ -48,10 +47,21 @@ const Cadastro = () => {
             </TouchableOpacity>
           </View>
           <View style={styles.inner_cadastro}>
-
             <View>
-              <View style={styles.login_google}><Image style={styles.imagem_google} source={require('./Imagens/google-icon-3.png')} /><Text>Continuar com o Google</Text></View>
-              <View style={styles.login_face}><Image style={styles.imagem_face} source={require('./Imagens/face.png')} /><Text>Continuar com o Facebook</Text></View>
+              <View style={styles.login_google}>
+                <Image
+                  style={styles.imagem_google}
+                  source={require('./Imagens/google-icon-3.png')}
+                />
+                <Text style={styles.google_text}>Continuar com o Google</Text>
+              </View>
+              <View style={styles.login_face}>
+                <Image
+                  style={styles.imagem_face}
+                  source={require('./Imagens/face.png')}
+                />
+                <Text style={styles.face_text}>Continuar com o Facebook</Text>
+              </View>
             </View>
 
             <View style={styles.ou_alinhador}>
@@ -85,8 +95,6 @@ const Cadastro = () => {
             </View>
 
             <View style={styles.alinhador}>
-              <BotaoSecundario conteudo="Voltar" />
-
               <BotaoPrincial conteudo="Continuar" />
             </View>
           </View>
@@ -115,7 +123,7 @@ const styles = StyleSheet.create({
   alinhador: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     width: '85%',
   },
   titulo: {
@@ -145,6 +153,7 @@ const styles = StyleSheet.create({
   ou_alinhador: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginVertical:50,
   },
   ou_texto: {
     fontFamily: 'Poppins-Light',
@@ -157,39 +166,53 @@ const styles = StyleSheet.create({
     backgroundColor: '#999',
     zIndex: 5,
   },
-  imagem_google:{
-    height:20,
-    width:20,
+  imagem_google: {
+    height: 20,
+    width: 20,
+    position: 'absolute',
+    left: 40,
   },
-  imagem_face:{
-    height:20,
-    width:20,
+  imagem_face: {
+    height: 20,
+    width: 20,
+    position: 'absolute',
+    left: 40,
   },
-  login_google:{
-    alignItems:'center',
-    justifyContent:'space-evenly',
-    flexDirection:'row',
-    backgroundColor:'#fff',
-    width:'85%',
-    height:50,
+  login_google: {
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    width: '85%',
+    height: 50,
     marginHorizontal: 30,
     marginVertical: 15,
     borderRadius: 12,
     paddingHorizontal: 20,
     fontFamily: 'Poppins-Light',
   },
-  login_face:{
-    alignItems:'center',
-    justifyContent:'space-evenly',
-    flexDirection:'row',
-    backgroundColor:'#3B5998',
-    width:'85%',
-    height:50,
+  login_face: {
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    flexDirection: 'row',
+    backgroundColor: '#3B5998',
+    width: '85%',
+    height: 50,
     marginHorizontal: 30,
     marginVertical: 15,
     borderRadius: 12,
     paddingHorizontal: 20,
     fontFamily: 'Poppins-Light',
+  },
+  face_text: {
+    color: '#fff',
+    fontFamily: 'Poppins-Bold',
+  },
+  google_text: {
+    color: '#000',
+    fontFamily: 'Poppins-Bold',
   },
 });
 
