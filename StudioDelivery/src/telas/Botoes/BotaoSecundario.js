@@ -14,11 +14,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-export default props =>{
+const BotaoSecundario = (props) => {
     return(
-    <TouchableOpacity style={styles.btn}>
+    <View 
+    style={styles.btn}
+    >
             <Text style={styles.btn_txt}>{props.conteudo}</Text>
-    </TouchableOpacity>
+    </View>
     )
 }
 const styles = StyleSheet.create({
@@ -28,7 +30,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       marginVertical: 10,
-      width: '47.5%',
+      width: 150,
       height: 55,
       backgroundColor: 'rgba(78, 70, 180, 0.5)',
       borderRadius: 12,
@@ -36,3 +38,4 @@ const styles = StyleSheet.create({
     btn_txt: {fontFamily: 'Poppins-Bold', fontWeight: '700', color: '#fff'},
     })
 
+    export default BotaoSecundario

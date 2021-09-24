@@ -22,9 +22,10 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
   Image,
+  Pressable,
 } from 'react-native';
 
-const Cadastro = () => {
+const Cadastro = ({navigation}) => {
   const [senha, setSenha] = React.useState(true);
 
   const iconSenha = senha
@@ -40,11 +41,11 @@ const Cadastro = () => {
         <View>
           <View style={styles.container}>
             <Text style={styles.titulo}>Fazer login</Text>
-            <TouchableOpacity>
+            <Pressable onPress={() => navigation.navigate('Cadastro')}>
               <Text style={styles.sub_titulo}>
                 Novo usuário? <Text style={styles.login}>Crie uma conta</Text>
               </Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
           <View style={styles.inner_cadastro}>
             <View>

@@ -22,9 +22,11 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
   Image,
+  TouchableWithoutFeedback,
+  Pressable,
 } from 'react-native';
 
-const Cadastro = () => {
+const Cadastro = ({navigation}) => {
   const [senha, setSenha] = React.useState(true);
   const [confirmarSenha, setConfirmarSenha] = React.useState(true);
 
@@ -37,98 +39,103 @@ const Cadastro = () => {
     : require('./Imagens/mostrar.png');
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : null}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
-      style={styles.bg_cadastro}>
-      <ScrollView>
-        <View>
-          <View style={styles.container}>
-            <Text style={styles.titulo}>Criar uma conta</Text>
-            <TouchableOpacity>
-              <Text style={styles.sub_titulo}>
-                Já tem uma conta? <Text style={styles.login}>Faça login</Text>
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.inner_cadastro}>
-            <InputPrincipal
-              placeholder="Nome Completo"
-              type="default"
-              secure={false}
-            />
-
-            <View style={styles.alinhador}>
-              <InputSecundario
-                placeholder="Data de Nascimento"
-                type="numeric"
-                secure={false}
-                mascara="datetime"
-              />
-              <InputTerciario
-                placeholder="CPF"
-                type="numeric"
-                secure={false}
-                mascara="cpf"
-              />
+    <SafeAreaView>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : null}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
+        style={styles.bg_cadastro}>
+        <ScrollView>
+          <View>
+            <View style={styles.container}>
+              <Text style={styles.titulo}>Criar uma conta</Text>
+              <Pressable onPress={() => navigation.navigate('Login')}>
+                <Text style={styles.sub_titulo}>
+                  Já tem uma conta? <Text style={styles.login}>Faça login</Text>
+                </Text>
+              </Pressable>
             </View>
-            <InputMask
-              placeholder="Celular"
-              type="numeric"
-              secure={false}
-              mascara="cel-phone"
-            />
-            <InputPrincipal
-              placeholder="E-mail"
-              type="default"
-              secure={false}
-            />
-            <View style={styles.mostrar_senha}>
-              <TouchableOpacity
-                style={styles.btn_senha}
-                onPressIn={() => {
-                  setSenha(false);
-                }}
-                onPressOut={() => {
-                  setSenha(true);
-                }}>
-                <Image style={styles.imagem_senha} source={iconSenha} />
-              </TouchableOpacity>
+            <View style={styles.inner_cadastro}>
               <InputPrincipal
-                placeholder="Senha"
+                placeholder="Nome Completo"
                 type="default"
-                secure={senha}
+                secure={false}
               />
-            </View>
-            <View style={styles.mostrar_senha}>
-              <TouchableOpacity
-                style={styles.btn_senha}
-                onPressIn={() => {
-                  setConfirmarSenha(false);
-                }}
-                onPressOut={() => {
-                  setConfirmarSenha(true);
-                }}>
-                <Image
-                  style={styles.imagem_senha}
-                  source={iconConfirmarSenha}
+
+              <View style={styles.alinhador}>
+                <InputSecundario
+                  placeholder="Data de Nascimento"
+                  type="numeric"
+                  secure={false}
+                  mascara="datetime"
                 />
-              </TouchableOpacity>
-              <InputPrincipal
-                placeholder="Repetir a senha"
-                type="default"
-                secure={confirmarSenha}
+                <InputTerciario
+                  placeholder="CPF"
+                  type="numeric"
+                  secure={false}
+                  mascara="cpf"
+                />
+              </View>
+              <InputMask
+                placeholder="Celular"
+                type="numeric"
+                secure={false}
+                mascara="cel-phone"
               />
-            </View>
-            <View style={styles.alinhador}>
-              <BotaoSecundario conteudo="Voltar" />
-
-              <BotaoPrincial conteudo="Continuar" />
+              <InputPrincipal
+                placeholder="E-mail"
+                type="default"
+                secure={false}
+              />
+              <View style={styles.mostrar_senha}>
+                <TouchableOpacity
+                  style={styles.btn_senha}
+                  onPressIn={() => {
+                    setSenha(false);
+                  }}
+                  onPressOut={() => {
+                    setSenha(true);
+                  }}>
+                  <Image style={styles.imagem_senha} source={iconSenha} />
+                </TouchableOpacity>
+                <InputPrincipal
+                  placeholder="Senha"
+                  type="default"
+                  secure={senha}
+                />
+              </View>
+              <View style={styles.mostrar_senha}>
+                <TouchableOpacity
+                  style={styles.btn_senha}
+                  onPressIn={() => {
+                    setConfirmarSenha(false);
+                  }}
+                  onPressOut={() => {
+                    setConfirmarSenha(true);
+                  }}>
+                  <Image
+                    style={styles.imagem_senha}
+                    source={iconConfirmarSenha}
+                  />
+                </TouchableOpacity>
+                <InputPrincipal
+                  placeholder="Repetir a senha"
+                  type="default"
+                  secure={confirmarSenha}
+                />
+              </View>
+              <View style={styles.alinhador}>
+                <Pressable
+                  onPressIn={() => navigation.navigate('Login')}>
+                  <BotaoSecundario conteudo="Voltar" />
+                </Pressable>
+                
+                <BotaoPrincial conteudo="Continuar" />
+              </View>
             </View>
           </View>
-        </View>
-      </ScrollView>
-    </KeyboardAvoidingView>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({

@@ -16,9 +16,9 @@ import {
 
 export default props => {
   return (
-    <TouchableOpacity style={styles.btn}>
+    <View style={styles.btn}>
       <Text style={styles.btn_txt}>{props.conteudo}</Text>
-    </TouchableOpacity>
+    </View>
   );
 };
 const styles = StyleSheet.create({
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginVertical: 10,
-    width: '47.5%',
+    width: 150,
     height: 55,
     backgroundColor: 'rgba(78, 70, 180, 1)',
     borderRadius: 12,
