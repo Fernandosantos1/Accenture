@@ -33,6 +33,7 @@ const Cadastro = ({navigation}) => {
     : require('./Imagens/mostrar.png');
 
   return (
+    <SafeAreaView>
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
@@ -102,6 +103,7 @@ const Cadastro = ({navigation}) => {
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({

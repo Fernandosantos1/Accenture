@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         display:'flex',
         justifyContent:'center',
         alignItems:'flex-end',
-        height:100,
+        height:'13%',
         
     },
     inicio_titulo:{
